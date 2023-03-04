@@ -1,0 +1,62 @@
+Last login: Sat Mar  4 18:00:15 2023 from ec2-18-206-107-29.compute-1.amazonaws.com
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-10-1-10-189 ~]$ sudo su
+[root@ip-10-1-10-189 ec2-user]# mysql -h primary-db-mysql.csqcyqkovml0.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 52
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+MySQL [(none)]> create database udacity;
+Query OK, 1 row affected (0.02 sec)
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.00 sec)
+
+MySQL [(none)]> use udacity;
+Database changed
+
+MySQL [udacity]> create table products(id int auto_increment primary key, car varchar(40));
+Query OK, 0 rows affected (0.06 sec)
+
+MySQL [udacity]> insert into products(car) values('honda');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> select * from products;
++----+-------+
+| id | car   |
++----+-------+
+|  1 | honda |
++----+-------+
+1 row in set (0.01 sec)
+
+MySQL [udacity]>
